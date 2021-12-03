@@ -1,4 +1,6 @@
+from data import userinfo
 import sys
+import requests
 import platform
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
@@ -7,7 +9,8 @@ from PySide2.QtWidgets import *
 
 from app_modules import *
 
-class MainWindow(QMainWindow):
+
+class MainWindow(QMainWindow, userinfo):
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
@@ -25,16 +28,44 @@ class MainWindow(QMainWindow):
         UIFunctions.addNewMenu(self, "mod selection", "btn_widgets", "url(:/16x16/icons/16x16/cil-equalizer.png)", True)
         UIFunctions.selectStandardMenu(self, "btn_home")
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_home)
+        self.ui.Recent_Maps.setColumnWidth(0,460)
+        self.ui.Recent_Maps.setColumnWidth(1,100)
+        self.ui.Recent_Maps.setColumnWidth(2,100)
+        self.ui.Recent_Maps.setColumnWidth(3,100)
+        self.ui.Recent_Maps.setColumnWidth(4,80)
         
-        def goclick():
+
+        def loadmaps():
+            row = 0
+            songs= userinfo.GetRecentScore()
+
+            self.ui.Recent_Maps.setRowCount(len(songs))
+            for song in songs:
+                self.ui.Recent_Maps.setItem(row, 1, QtWidgets.QTableWidgetItem(song['count300']))
+                self.ui.Recent_Maps.setItem(row, 2, QtWidgets.QTableWidgetItem(song['count100']))
+                self.ui.Recent_Maps.setItem(row, 3, QtWidgets.QTableWidgetItem(song['count50']))
+                self.ui.Recent_Maps.setItem(row, 4, QtWidgets.QTableWidgetItem(song['countmiss']))
+                row = row+1
+            
+            title= userinfo.GetRecentTitle()
+            row = 0
+            for test in title:
+                print(test)
+                self.ui.Recent_Maps.setItem(row, 0, QtWidgets.QTableWidgetItem(test))
+                row = row+1
+        
+        loadmaps()
+        
+        def scores_click():
                 self.ui.stackedWidget.setCurrentIndex(1)
         
-        self.ui.btn_go.clicked.connect(lambda:goclick())
+        self.ui.btn_go.clicked.connect(lambda:scores_click())
 
-        def goclick2():
+        def recommend_click():
                 self.ui.stackedWidget.setCurrentIndex(3)
-
-        self.ui.btn_submit.clicked.connect(lambda: goclick2())
+            
+        
+        self.ui.btn_submit.clicked.connect(lambda: recommend_click())
 
         def moveWindow(event):
             if UIFunctions.returStatus() == 1:
