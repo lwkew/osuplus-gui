@@ -1535,7 +1535,7 @@ QPushButton:pressed {
                    <string notr="true">background: transparent;</string>
                   </property>
                   <property name="currentIndex">
-                   <number>2</number>
+                   <number>3</number>
                   </property>
                   <widget class="QWidget" name="page_home">
                    <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -2384,7 +2384,7 @@ QHeaderView::section:vertical
                      <set>Qt::AlignCenter</set>
                     </property>
                    </widget>
-                   <widget class="QPushButton" name="btn_go_2">
+                   <widget class="QPushButton" name="btn_submit">
                     <property name="enabled">
                      <bool>true</bool>
                     </property>
@@ -2431,276 +2431,83 @@ QPushButton:pressed {
 }</string>
                     </property>
                     <property name="text">
-                     <string>apply</string>
+                     <string>submit</string>
                     </property>
                    </widget>
                   </widget>
-                  <widget class="QWidget" name="page_extras">
-                   <layout class="QVBoxLayout" name="verticalLayout_6">
-                    <item>
-                     <widget class="QFrame" name="frame_2">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>150</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color: rgb(39, 44, 54);
-border-radius: 5px;</string>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_11">
-                       <item>
-                        <layout class="QGridLayout" name="gridLayout_2">
-                         <item row="0" column="0">
-                          <widget class="QCheckBox" name="checkBox">
-                           <property name="autoFillBackground">
-                            <bool>false</bool>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="text">
-                            <string>CheckBox</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="1">
-                          <widget class="QRadioButton" name="radioButton">
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="text">
-                            <string>RadioButton</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="2" rowspan="3">
-                          <widget class="QSlider" name="verticalSlider">
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="orientation">
-                            <enum>Qt::Vertical</enum>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="4" rowspan="3">
-                          <widget class="QScrollBar" name="verticalScrollBar">
-                           <property name="styleSheet">
-                            <string notr="true"> QScrollBar:vertical {
-	border: none;
-    background: rgb(52, 59, 72);
-    width: 14px;
-    margin: 21px 0 21px 0;
-	border-radius: 0px;
- }</string>
-                           </property>
-                           <property name="orientation">
-                            <enum>Qt::Vertical</enum>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="0" column="5" rowspan="3">
-                          <widget class="QScrollArea" name="scrollArea">
-                           <property name="styleSheet">
-                            <string notr="true">QScrollArea {
-	border: none;
-	border-radius: 0px;
-}
-QScrollBar:horizontal {
-    border: none;
-    background: rgb(52, 59, 72);
-    height: 14px;
-    margin: 0px 21px 0 21px;
-	border-radius: 0px;
-}
- QScrollBar:vertical {
-	border: none;
-    background: rgb(52, 59, 72);
-    width: 14px;
-    margin: 21px 0 21px 0;
-	border-radius: 0px;
- }
-</string>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::NoFrame</enum>
-                           </property>
-                           <property name="verticalScrollBarPolicy">
-                            <enum>Qt::ScrollBarAlwaysOn</enum>
-                           </property>
-                           <property name="horizontalScrollBarPolicy">
-                            <enum>Qt::ScrollBarAsNeeded</enum>
-                           </property>
-                           <property name="widgetResizable">
-                            <bool>true</bool>
-                           </property>
-                           <widget class="QWidget" name="scrollAreaWidgetContents">
-                            <property name="geometry">
-                             <rect>
-                              <x>0</x>
-                              <y>0</y>
-                              <width>274</width>
-                              <height>333</height>
-                             </rect>
-                            </property>
-                            <layout class="QHBoxLayout" name="horizontalLayout_11">
-                             <item>
-                              <widget class="QPlainTextEdit" name="plainTextEdit">
-                               <property name="minimumSize">
-                                <size>
-                                 <width>200</width>
-                                 <height>200</height>
-                                </size>
-                               </property>
-                               <property name="styleSheet">
-                                <string notr="true">QPlainTextEdit {
-	background-color: rgb(27, 29, 35);
-	border-radius: 5px;
-	padding: 10px;
-}
-QPlainTextEdit:hover {
-	border: 2px solid rgb(64, 71, 88);
-}
-QPlainTextEdit:focus {
-	border: 2px solid rgb(91, 101, 124);
-}</string>
-                               </property>
-                              </widget>
-                             </item>
-                            </layout>
-                           </widget>
-                          </widget>
-                         </item>
-                         <item row="1" column="0" colspan="2">
-                          <widget class="QComboBox" name="comboBox">
-                           <property name="font">
-                            <font>
-                             <pointsize>9</pointsize>
-                            </font>
-                           </property>
-                           <property name="autoFillBackground">
-                            <bool>false</bool>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">QComboBox{
-	background-color: rgb(27, 29, 35);
-	border-radius: 5px;
-	border: 2px solid rgb(27, 29, 35);
-	padding: 5px;
-	padding-left: 10px;
-}
-QComboBox:hover{
-	border: 2px solid rgb(64, 71, 88);
-}
-QComboBox QAbstractItemView {
-	color: rgb(85, 170, 255);	
-	background-color: rgb(27, 29, 35);
-	padding: 10px;
-	selection-background-color: rgb(39, 44, 54);
-}</string>
-                           </property>
-                           <property name="iconSize">
-                            <size>
-                             <width>16</width>
-                             <height>16</height>
-                            </size>
-                           </property>
-                           <property name="frame">
-                            <bool>true</bool>
-                           </property>
-                           <item>
-                            <property name="text">
-                             <string>Test 1</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>Test 2</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>Test 3</string>
-                            </property>
-                           </item>
-                          </widget>
-                         </item>
-                         <item row="1" column="3">
-                          <widget class="QScrollBar" name="horizontalScrollBar">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">QScrollBar:horizontal {
-    border: none;
-    background: rgb(52, 59, 72);
-    height: 14px;
-    margin: 0px 21px 0 21px;
-	border-radius: 0px;
-}
-</string>
-                           </property>
-                           <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="1" column="6">
-                          <widget class="QCommandLinkButton" name="commandLinkButton">
-                           <property name="styleSheet">
-                            <string notr="true">QCommandLinkButton {	
-	color: rgb(85, 170, 255);
-	border-radius: 5px;
-	padding: 5px;
-}
-QCommandLinkButton:hover {	
-	color: rgb(210, 210, 210);
-	background-color: rgb(44, 49, 60);
-}
-QCommandLinkButton:pressed {	
-	color: rgb(210, 210, 210);
-	background-color: rgb(52, 58, 71);
-}</string>
-                           </property>
-                           <property name="text">
-                            <string>CommandLinkButton</string>
-                           </property>
-                           <property name="icon">
-                            <iconset resource="files.qrc">
-                             <normaloff>:/16x16/icons/16x16/cil-link.png</normaloff>:/16x16/icons/16x16/cil-link.png</iconset>
-                           </property>
-                           <property name="description">
-                            <string>Open External Link</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item row="2" column="0" colspan="2">
-                          <widget class="QSlider" name="horizontalSlider">
-                           <property name="styleSheet">
-                            <string notr="true"/>
-                           </property>
-                           <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                   </layout>
+                  <widget class="QWidget" name="page_recommend">
+                   <widget class="QLabel" name="title_4">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>50</y>
+                      <width>882</width>
+                      <height>81</height>
+                     </rect>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Aller</family>
+                      <pointsize>40</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;song recommendation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::AutoText</enum>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="title_5">
+                    <property name="geometry">
+                     <rect>
+                      <x>20</x>
+                      <y>210</y>
+                      <width>882</width>
+                      <height>81</height>
+                     </rect>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Aller</family>
+                      <pointsize>40</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;map title&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::AutoText</enum>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
                   </widget>
                  </widget>
                 </item>
@@ -2851,14 +2658,6 @@ QCommandLinkButton:pressed {
   <tabstop>btn_maximize_restore</tabstop>
   <tabstop>btn_close</tabstop>
   <tabstop>btn_toggle_menu</tabstop>
-  <tabstop>checkBox</tabstop>
-  <tabstop>comboBox</tabstop>
-  <tabstop>radioButton</tabstop>
-  <tabstop>horizontalSlider</tabstop>
-  <tabstop>verticalSlider</tabstop>
-  <tabstop>scrollArea</tabstop>
-  <tabstop>plainTextEdit</tabstop>
-  <tabstop>commandLinkButton</tabstop>
  </tabstops>
  <resources>
   <include location="files.qrc"/>

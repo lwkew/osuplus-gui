@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'GUI_BASEZqdlrn.ui'
+## Form generated from reading UI file 'GUI_BASEtybOkf.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -734,11 +734,6 @@ class Ui_MainWindow(object):
 "	background-color: rgb(85, 170, 255);\n"
 "}")
 
-        def goclick():
-                self.stackedWidget.setCurrentIndex(1)
-        
-        self.btn_go.clicked.connect(lambda:goclick())
-
         self.verticalLayout_10.addWidget(self.btn_go, 0, Qt.AlignHCenter)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
@@ -1008,16 +1003,16 @@ class Ui_MainWindow(object):
         self.title_3.setStyleSheet(u"")
         self.title_3.setTextFormat(Qt.AutoText)
         self.title_3.setAlignment(Qt.AlignCenter)
-        self.btn_go_2 = QPushButton(self.page_widgets)
-        self.btn_go_2.setObjectName(u"btn_go_2")
-        self.btn_go_2.setEnabled(True)
-        self.btn_go_2.setGeometry(QRect(400, 370, 101, 40))
-        sizePolicy5.setHeightForWidth(self.btn_go_2.sizePolicy().hasHeightForWidth())
-        self.btn_go_2.setSizePolicy(sizePolicy5)
-        self.btn_go_2.setMaximumSize(QSize(300, 40))
-        self.btn_go_2.setFont(font6)
-        self.btn_go_2.setMouseTracking(False)
-        self.btn_go_2.setStyleSheet(u"QPushButton {\n"
+        self.btn_submit = QPushButton(self.page_widgets)
+        self.btn_submit.setObjectName(u"btn_submit")
+        self.btn_submit.setEnabled(True)
+        self.btn_submit.setGeometry(QRect(400, 370, 101, 40))
+        sizePolicy5.setHeightForWidth(self.btn_submit.sizePolicy().hasHeightForWidth())
+        self.btn_submit.setSizePolicy(sizePolicy5)
+        self.btn_submit.setMaximumSize(QSize(300, 40))
+        self.btn_submit.setFont(font6)
+        self.btn_submit.setMouseTracking(False)
+        self.btn_submit.setStyleSheet(u"QPushButton {\n"
 "	background-color: rgb(62, 67, 80);\n"
 "}\n"
 "QPushButton:hover {\n"
@@ -1027,189 +1022,41 @@ class Ui_MainWindow(object):
 "	background-color: rgb(85, 170, 255);\n"
 "}")
         self.stackedWidget.addWidget(self.page_widgets)
-        self.page_extras = QWidget()
-        self.page_extras.setObjectName(u"page_extras")
-        self.verticalLayout_6 = QVBoxLayout(self.page_extras)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.frame_2 = QFrame(self.page_extras)
-        self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setMinimumSize(QSize(0, 150))
-        self.frame_2.setStyleSheet(u"background-color: rgb(39, 44, 54);\n"
-"border-radius: 5px;")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_11 = QVBoxLayout(self.frame_2)
-        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
-        self.gridLayout_2 = QGridLayout()
-        self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.checkBox = QCheckBox(self.frame_2)
-        self.checkBox.setObjectName(u"checkBox")
-        self.checkBox.setAutoFillBackground(False)
-        self.checkBox.setStyleSheet(u"")
-
-        self.gridLayout_2.addWidget(self.checkBox, 0, 0, 1, 1)
-
-        self.radioButton = QRadioButton(self.frame_2)
-        self.radioButton.setObjectName(u"radioButton")
-        self.radioButton.setStyleSheet(u"")
-
-        self.gridLayout_2.addWidget(self.radioButton, 0, 1, 1, 1)
-
-        self.verticalSlider = QSlider(self.frame_2)
-        self.verticalSlider.setObjectName(u"verticalSlider")
-        self.verticalSlider.setStyleSheet(u"")
-        self.verticalSlider.setOrientation(Qt.Vertical)
-
-        self.gridLayout_2.addWidget(self.verticalSlider, 0, 2, 3, 1)
-
-        self.verticalScrollBar = QScrollBar(self.frame_2)
-        self.verticalScrollBar.setObjectName(u"verticalScrollBar")
-        self.verticalScrollBar.setStyleSheet(u" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }")
-        self.verticalScrollBar.setOrientation(Qt.Vertical)
-
-        self.gridLayout_2.addWidget(self.verticalScrollBar, 0, 4, 3, 1)
-
-        self.scrollArea = QScrollArea(self.frame_2)
-        self.scrollArea.setObjectName(u"scrollArea")
-        self.scrollArea.setStyleSheet(u"QScrollArea {\n"
-"	border: none;\n"
-"	border-radius: 0px;\n"
-"}\n"
-"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-" QScrollBar:vertical {\n"
-"	border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    width: 14px;\n"
-"    margin: 21px 0 21px 0;\n"
-"	border-radius: 0px;\n"
-" }\n"
-"")
-        self.scrollArea.setFrameShape(QFrame.NoFrame)
-        self.scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
-        self.scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.scrollArea.setWidgetResizable(True)
-        self.scrollAreaWidgetContents = QWidget()
-        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 274, 333))
-        self.horizontalLayout_11 = QHBoxLayout(self.scrollAreaWidgetContents)
-        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.plainTextEdit = QPlainTextEdit(self.scrollAreaWidgetContents)
-        self.plainTextEdit.setObjectName(u"plainTextEdit")
-        self.plainTextEdit.setMinimumSize(QSize(200, 200))
-        self.plainTextEdit.setStyleSheet(u"QPlainTextEdit {\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	border-radius: 5px;\n"
-"	padding: 10px;\n"
-"}\n"
-"QPlainTextEdit:hover {\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
-"}\n"
-"QPlainTextEdit:focus {\n"
-"	border: 2px solid rgb(91, 101, 124);\n"
-"}")
-
-        self.horizontalLayout_11.addWidget(self.plainTextEdit)
-
-        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
-
-        self.gridLayout_2.addWidget(self.scrollArea, 0, 5, 3, 1)
-
-        self.comboBox = QComboBox(self.frame_2)
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.setObjectName(u"comboBox")
-        font8 = QFont()
-        font8.setPointSize(9)
-        self.comboBox.setFont(font8)
-        self.comboBox.setAutoFillBackground(False)
-        self.comboBox.setStyleSheet(u"QComboBox{\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	border-radius: 5px;\n"
-"	border: 2px solid rgb(27, 29, 35);\n"
-"	padding: 5px;\n"
-"	padding-left: 10px;\n"
-"}\n"
-"QComboBox:hover{\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
-"}\n"
-"QComboBox QAbstractItemView {\n"
-"	color: rgb(85, 170, 255);	\n"
-"	background-color: rgb(27, 29, 35);\n"
-"	padding: 10px;\n"
-"	selection-background-color: rgb(39, 44, 54);\n"
-"}")
-        self.comboBox.setIconSize(QSize(16, 16))
-        self.comboBox.setFrame(True)
-
-        self.gridLayout_2.addWidget(self.comboBox, 1, 0, 1, 2)
-
-        self.horizontalScrollBar = QScrollBar(self.frame_2)
-        self.horizontalScrollBar.setObjectName(u"horizontalScrollBar")
-        sizePolicy7 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        sizePolicy7.setHorizontalStretch(0)
-        sizePolicy7.setVerticalStretch(0)
-        sizePolicy7.setHeightForWidth(self.horizontalScrollBar.sizePolicy().hasHeightForWidth())
-        self.horizontalScrollBar.setSizePolicy(sizePolicy7)
-        self.horizontalScrollBar.setStyleSheet(u"QScrollBar:horizontal {\n"
-"    border: none;\n"
-"    background: rgb(52, 59, 72);\n"
-"    height: 14px;\n"
-"    margin: 0px 21px 0 21px;\n"
-"	border-radius: 0px;\n"
-"}\n"
-"")
-        self.horizontalScrollBar.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_2.addWidget(self.horizontalScrollBar, 1, 3, 1, 1)
-
-        self.commandLinkButton = QCommandLinkButton(self.frame_2)
-        self.commandLinkButton.setObjectName(u"commandLinkButton")
-        self.commandLinkButton.setStyleSheet(u"QCommandLinkButton {	\n"
-"	color: rgb(85, 170, 255);\n"
-"	border-radius: 5px;\n"
-"	padding: 5px;\n"
-"}\n"
-"QCommandLinkButton:hover {	\n"
-"	color: rgb(210, 210, 210);\n"
-"	background-color: rgb(44, 49, 60);\n"
-"}\n"
-"QCommandLinkButton:pressed {	\n"
-"	color: rgb(210, 210, 210);\n"
-"	background-color: rgb(52, 58, 71);\n"
-"}")
-        icon3 = QIcon()
-        icon3.addFile(u":/16x16/icons/16x16/cil-link.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.commandLinkButton.setIcon(icon3)
-
-        self.gridLayout_2.addWidget(self.commandLinkButton, 1, 6, 1, 1)
-
-        self.horizontalSlider = QSlider(self.frame_2)
-        self.horizontalSlider.setObjectName(u"horizontalSlider")
-        self.horizontalSlider.setStyleSheet(u"")
-        self.horizontalSlider.setOrientation(Qt.Horizontal)
-
-        self.gridLayout_2.addWidget(self.horizontalSlider, 2, 0, 1, 2)
-
-
-        self.verticalLayout_11.addLayout(self.gridLayout_2)
-
-
-        self.verticalLayout_6.addWidget(self.frame_2)
-
-        self.stackedWidget.addWidget(self.page_extras)
+        self.page_recommend = QWidget()
+        self.page_recommend.setObjectName(u"page_recommend")
+        self.title_4 = QLabel(self.page_recommend)
+        self.title_4.setObjectName(u"title_4")
+        self.title_4.setGeometry(QRect(0, 50, 882, 81))
+        self.title_4.setMaximumSize(QSize(16777215, 16777215))
+        self.title_4.setFont(font5)
+        self.title_4.setStyleSheet(u"")
+        self.title_4.setTextFormat(Qt.AutoText)
+        self.title_4.setAlignment(Qt.AlignCenter)
+        self.title_5 = QLabel(self.page_recommend)
+        self.title_5.setObjectName(u"title_5")
+        self.title_5.setGeometry(QRect(-10, 220, 882, 81))
+        self.title_5.setMaximumSize(QSize(16777215, 16777215))
+        self.title_5.setFont(font5)
+        self.title_5.setStyleSheet(u"")
+        self.title_5.setTextFormat(Qt.AutoText)
+        self.title_5.setAlignment(Qt.AlignCenter)
+        self.title_6 = QLabel(self.page_recommend)
+        self.title_6.setObjectName(u"title_6")
+        self.title_6.setGeometry(QRect(-10, 340, 882, 81))
+        self.title_6.setMaximumSize(QSize(16777215, 16777215))
+        self.title_6.setFont(font5)
+        self.title_6.setStyleSheet(u"")
+        self.title_6.setTextFormat(Qt.AutoText)
+        self.title_6.setAlignment(Qt.AlignCenter)
+        self.title_7 = QLabel(self.page_recommend)
+        self.title_7.setObjectName(u"title_7")
+        self.title_7.setGeometry(QRect(-10, 460, 882, 81))
+        self.title_7.setMaximumSize(QSize(16777215, 16777215))
+        self.title_7.setFont(font5)
+        self.title_7.setStyleSheet(u"")
+        self.title_7.setTextFormat(Qt.AutoText)
+        self.title_7.setAlignment(Qt.AlignCenter)
+        self.stackedWidget.addWidget(self.page_recommend)
 
         self.verticalLayout_9.addWidget(self.stackedWidget)
 
@@ -1283,18 +1130,10 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.btn_minimize, self.btn_maximize_restore)
         QWidget.setTabOrder(self.btn_maximize_restore, self.btn_close)
         QWidget.setTabOrder(self.btn_close, self.btn_toggle_menu)
-        QWidget.setTabOrder(self.btn_toggle_menu, self.checkBox)
-        QWidget.setTabOrder(self.checkBox, self.comboBox)
-        QWidget.setTabOrder(self.comboBox, self.radioButton)
-        QWidget.setTabOrder(self.radioButton, self.horizontalSlider)
-        QWidget.setTabOrder(self.horizontalSlider, self.verticalSlider)
-        QWidget.setTabOrder(self.verticalSlider, self.scrollArea)
-        QWidget.setTabOrder(self.scrollArea, self.plainTextEdit)
-        QWidget.setTabOrder(self.plainTextEdit, self.commandLinkButton)
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1391,15 +1230,11 @@ class Ui_MainWindow(object):
         self.Hidden.setText(QCoreApplication.translate("MainWindow", u"hidden", None))
         self.Flashlight.setText(QCoreApplication.translate("MainWindow", u"flashlight", None))
         self.title_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:26pt;\">select mods</span></p></body></html>", None))
-        self.btn_go_2.setText(QCoreApplication.translate("MainWindow", u"apply", None))
-        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"CheckBox", None))
-        self.radioButton.setText(QCoreApplication.translate("MainWindow", u"RadioButton", None))
-        self.comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Test 1", None))
-        self.comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"Test 2", None))
-        self.comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"Test 3", None))
-
-        self.commandLinkButton.setText(QCoreApplication.translate("MainWindow", u"CommandLinkButton", None))
-        self.commandLinkButton.setDescription(QCoreApplication.translate("MainWindow", u"Open External Link", None))
+        self.btn_submit.setText(QCoreApplication.translate("MainWindow", u"submit", None))
+        self.title_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">song recommendation</p></body></html>", None))
+        self.title_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:28pt; font-weight:400;\">map title</span></p></body></html>", None))
+        self.title_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:28pt; font-weight:400;\">star rating</span></p><p align=\"center\"><br/></p></body></html>", None))
+        self.title_7.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:28pt; font-weight:400;\">link</span></p><p align=\"center\"><br/></p></body></html>", None))
         self.label_credits.setText(QCoreApplication.translate("MainWindow", u"Created By: Luke Williams", None))
         self.label_version.setText(QCoreApplication.translate("MainWindow", u"v1.0.0", None))
     # retranslateUi

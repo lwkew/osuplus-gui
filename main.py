@@ -25,6 +25,16 @@ class MainWindow(QMainWindow):
         UIFunctions.addNewMenu(self, "mod selection", "btn_widgets", "url(:/16x16/icons/16x16/cil-equalizer.png)", True)
         UIFunctions.selectStandardMenu(self, "btn_home")
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_home)
+        
+        def goclick():
+                self.ui.stackedWidget.setCurrentIndex(1)
+        
+        self.ui.btn_go.clicked.connect(lambda:goclick())
+
+        def goclick2():
+                self.ui.stackedWidget.setCurrentIndex(3)
+
+        self.ui.btn_submit.clicked.connect(lambda: goclick2())
 
         def moveWindow(event):
             if UIFunctions.returStatus() == 1:
