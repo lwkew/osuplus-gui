@@ -56,6 +56,9 @@ class MainWindow(QMainWindow, userinfo):
         
         loadmaps()
         
+        app.setStyleSheet('QWidget { background-image: url(bg.png); } QHeaderView::section { background-color: rgba(0,0,0,0); } QTableWidget QTableCornerButton::section {background-color: rgba(0,0,0,0); }')
+        
+        
         def scores_click():
                 self.ui.stackedWidget.setCurrentIndex(1)
         

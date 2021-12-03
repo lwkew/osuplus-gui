@@ -24,10 +24,7 @@ class userinfo():
             BeatmapID=latest_test['beatmap_id']
             APITitle = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&b=' + str(BeatmapID))
             recentmap = APITitle.json()
-            #print(recentmap)
-
             titlelist.append(recentmap[0]['title'])
-            #print(titlelist)
         return titlelist
 
 
