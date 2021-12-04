@@ -1535,7 +1535,7 @@ QPushButton:pressed {
                    <string notr="true">background: transparent;</string>
                   </property>
                   <property name="currentIndex">
-                   <number>1</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="page_home">
                    <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -1589,7 +1589,7 @@ QPushButton:pressed {
                        </font>
                       </property>
                       <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;osu!plus is an interface that shows you the scores you want to see, &lt;/p&gt;&lt;p&gt;based on your mod choices, and provides a method of recommendation, &lt;/p&gt;&lt;p&gt;to allow you to choose the next map you want to play&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;to begin, click the 'Get Scores' button below&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;osu!plus is an program that allows you to see your latest scores&lt;/p&gt;&lt;p&gt;and enables easy comparison&lt;/p&gt;&lt;p&gt;It also has a recommendation feature that uses your personal scores &lt;/p&gt;&lt;p&gt;to calculate the best recommendation&lt;/p&gt;&lt;p&gt;&lt;br/&gt;to begin, click the 'Get Scores' button below&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignCenter</set>

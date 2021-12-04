@@ -28,4 +28,17 @@ class userinfo():
         return titlelist
 
 
+class recommendinfo():
+    def __init__(self):
+        self._Latest_300=[]
+        pass
+    
+    def GetLatestPercent(self):
+        print(recentscore)
+        self._Latest_300 = recentscore['count300']
+        print(self._Latest_300)
+
+
+r=recommendinfo()
+r.GetLatestPercent
 

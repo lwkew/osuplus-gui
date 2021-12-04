@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'GUI_BASEoxClkr.ui'
+## Form generated from reading UI file 'GUI_BASEXWoPnt.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -1031,7 +1031,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1057,7 +1057,7 @@ class Ui_MainWindow(object):
         self.label_top_info_2.setText(QCoreApplication.translate("MainWindow", u"| HOME", None))
         self.label_user_icon.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:400;\">osu!</span></p></body></html>", None))
         self.title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:72pt; font-weight:600;\">osu!plus</span></p></body></html>", None))
-        self.maintext.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>osu!plus is an interface that shows you the scores you want to see, </p><p>based on your mod choices, and provides a method of recommendation, </p><p>to allow you to choose the next map you want to play</p><p><br/></p><p>to begin, click the 'Get Scores' button below</p></body></html>", None))
+        self.maintext.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>osu!plus is an program that allows you to see your latest scores</p><p>and enables easy comparison</p><p>It also has a recommendation feature that uses your personal scores </p><p>to calculate the best recommendation</p><p><br/>to begin, click the 'Get Scores' button below</p></body></html>", None))
         self.btn_go.setText(QCoreApplication.translate("MainWindow", u"Get Scores", None))
         self.title_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:28pt;\">recently played beatmaps</span></p></body></html>", None))
         ___qtablewidgetitem = self.Recent_Maps.horizontalHeaderItem(0)
