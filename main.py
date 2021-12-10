@@ -1,4 +1,4 @@
-from data import userinfo
+from data import recommendinfo, userinfo
 import sys
 import requests
 import platform
@@ -10,7 +10,7 @@ from PySide2.QtWidgets import *
 from app_modules import *
 
 
-class MainWindow(QMainWindow, userinfo):
+class MainWindow(QMainWindow, userinfo, recommendinfo):
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
@@ -36,10 +36,11 @@ class MainWindow(QMainWindow, userinfo):
         
 
         def loadmaps():
+            recommendinfo.GetBestPercent()
             row = 0
             songs= userinfo.GetRecentScore()
-
             self.ui.Recent_Maps.setRowCount(len(songs))
+            
             for song in songs:
                 self.ui.Recent_Maps.setItem(row, 1, QtWidgets.QTableWidgetItem(song['count300']))
                 self.ui.Recent_Maps.setItem(row, 2, QtWidgets.QTableWidgetItem(song['count100']))
@@ -50,7 +51,7 @@ class MainWindow(QMainWindow, userinfo):
             title= userinfo.GetRecentTitle()
             row = 0
             for test in title:
-                print(test)
+                #print(test)
                 self.ui.Recent_Maps.setItem(row, 0, QtWidgets.QTableWidgetItem(test))
                 row = row+1
         
@@ -58,6 +59,9 @@ class MainWindow(QMainWindow, userinfo):
         
         app.setStyleSheet('QWidget { background-image: url(bg.png); } QHeaderView::section { background-color: rgba(0,0,0,0); } QTableWidget QTableCornerButton::section {background-color: rgba(0,0,0,0); }')
         
+    
+        #def RecommendMaps():
+             #pass
         
         def scores_click():
                 self.ui.stackedWidget.setCurrentIndex(1)
@@ -67,8 +71,7 @@ class MainWindow(QMainWindow, userinfo):
         def recommend_click():
                 self.ui.stackedWidget.setCurrentIndex(3)
             
-        
-        self.ui.btn_submit.clicked.connect(lambda: recommend_click())
+        self.ui.btn_submit.clicked.connect(lambda:recommend_click())
 
         def moveWindow(event):
             if UIFunctions.returStatus() == 1:

@@ -1589,7 +1589,7 @@ QPushButton:pressed {
                        </font>
                       </property>
                       <property name="text">
-                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;osu!plus is an program that allows you to see your latest scores&lt;/p&gt;&lt;p&gt;and enables easy comparison&lt;/p&gt;&lt;p&gt;It also has a recommendation feature that uses your personal scores &lt;/p&gt;&lt;p&gt;to calculate the best recommendation&lt;/p&gt;&lt;p&gt;&lt;br/&gt;to begin, click the 'Get Scores' button below&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;osu!plus is an program that allows you to see your latest scores&lt;/p&gt;&lt;p&gt;and enables easy comparison&lt;/p&gt;&lt;p&gt;It also has a recommendation feature that uses your personal scores &lt;/p&gt;&lt;p&gt;to calculate the best recommendation&lt;/p&gt;&lt;p&gt;to begin, click the 'Get Scores' button below&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignCenter</set>

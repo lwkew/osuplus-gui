@@ -30,13 +30,22 @@ class userinfo():
 
 class recommendinfo():
     def __init__(self):
-        self._Latest_300=[]
         pass
     
     def GetLatestPercent(self):
-        print(recentscore)
-        self._Latest_300 = recentscore['count300']
-        print(self._Latest_300)
+        Latest_300 = recentscore['count300']
+        return Latest_300
+
+    def GetBestPercent():
+        recentscore=req1.json()
+        latest_test = recentscore[0]
+        BeatmapID=latest_test['beatmap_id']
+        APIBest = requests.get('https://osu.ppy.sh/api/get_scores?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=1&b=' + str(BeatmapID))
+        BestScore=APIBest.json()
+        Pull = BestScore[0]
+        Best300 = Pull['count300']
+        print(Best300)
+        return (Best300)
 
 
 r=recommendinfo()
