@@ -33,9 +33,11 @@ class recommendinfo():
     def __init__(self):
         self._Latest_300 = 0
         self._Best300 = 0
-    
-    def GetLatestPercent(self):
+        recentscore = req1.json()
         self._Latest_300 = int(recentscore['count300'])
+        print(self._Latest_300)
+    
+    def printer(self):
         return self._Latest_300
 
     def GetBestPercent(self):
@@ -54,3 +56,5 @@ def CalculateMapStars(self):
         Recommendation_percent = FinalPercent +2
     elif FinalPercent >= 99:
         Recommendation_percent = FinalPercent +2
+
+    print('yes')

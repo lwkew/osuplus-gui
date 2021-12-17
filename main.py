@@ -36,10 +36,10 @@ class MainWindow(QMainWindow, userinfo, recommendinfo):
         
 
         def loadmaps():
-            #recommendinfo.GetBestPercent()
             row = 0
             songs= userinfo.GetRecentScore()
-            test = recommendinfo.GetBestPercent()
+            recommendinfo.printer()
+            #print('this is', test)
             self.ui.Recent_Maps.setRowCount(len(songs))
             
             for song in songs:
@@ -51,9 +51,8 @@ class MainWindow(QMainWindow, userinfo, recommendinfo):
             
             title= userinfo.GetRecentTitle()
             row = 0
-            print('this is', test)
+            
             for test in title:
-                #print(test)
                 self.ui.Recent_Maps.setItem(row, 0, QtWidgets.QTableWidgetItem(test))
                 row = row+1
         
