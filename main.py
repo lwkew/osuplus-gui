@@ -41,7 +41,6 @@ class MainWindow(QMainWindow, userinfo, recommendinfo):
             m = recommendinfo()
             m.printer()
             m.CalculateMapStars()
-            #print('this is', test)
             self.ui.Recent_Maps.setRowCount(len(songs))
             
             for song in songs:
