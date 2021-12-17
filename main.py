@@ -36,9 +36,10 @@ class MainWindow(QMainWindow, userinfo, recommendinfo):
         
 
         def loadmaps():
-            recommendinfo.GetBestPercent()
+            #recommendinfo.GetBestPercent()
             row = 0
             songs= userinfo.GetRecentScore()
+            test = recommendinfo.GetBestPercent()
             self.ui.Recent_Maps.setRowCount(len(songs))
             
             for song in songs:
@@ -50,6 +51,7 @@ class MainWindow(QMainWindow, userinfo, recommendinfo):
             
             title= userinfo.GetRecentTitle()
             row = 0
+            print('this is', test)
             for test in title:
                 #print(test)
                 self.ui.Recent_Maps.setItem(row, 0, QtWidgets.QTableWidgetItem(test))
@@ -60,8 +62,6 @@ class MainWindow(QMainWindow, userinfo, recommendinfo):
         app.setStyleSheet('QWidget { background-image: url(bg.png); } QHeaderView::section { background-color: rgba(0,0,0,0); } QTableWidget QTableCornerButton::section {background-color: rgba(0,0,0,0); }')
         
     
-        #def RecommendMaps():
-             #pass
         
         def scores_click():
                 self.ui.stackedWidget.setCurrentIndex(1)
