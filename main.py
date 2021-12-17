@@ -38,7 +38,9 @@ class MainWindow(QMainWindow, userinfo, recommendinfo):
         def loadmaps():
             row = 0
             songs= userinfo.GetRecentScore()
-            recommendinfo.printer()
+            m = recommendinfo()
+            m.printer()
+            m.CalculateMapStars()
             #print('this is', test)
             self.ui.Recent_Maps.setRowCount(len(songs))
             
