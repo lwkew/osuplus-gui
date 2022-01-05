@@ -54,8 +54,10 @@ class recommendinfo():
         APITitle = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&b=' + str(BeatmapID))
         recentmap1 = APITitle.json()
         pull2 = recentmap1[0]
-        self._map_rating = int(float(pull2['difficultyrating']))
+        self._map_rating = float(pull2['difficultyrating'])
         
+        #APIRecommend = 
+
     def printer(self):
         print('map rating:', self._map_rating)
         print('latest 300 count:', self._Latest_300)
@@ -64,27 +66,39 @@ class recommendinfo():
 
     #CALCULATING THE PLAYERS STAR RATING FOR THE RECOMMENDATION, BASED OFF OF THEIR LAST PLAY
     def CalculateMapStars(self):
-        new_rating = 0
+        self._new_rating = 0
         FinalPercent = (self._Latest_300 / self._Best300) *100
         print('final percent:', FinalPercent)
         
         if FinalPercent == 100:
-            new_rating = self._map_rating +0.3
+            self._new_rating = self._map_rating +0.3
         elif FinalPercent >= 99:
-            new_rating = self._map_rating + 0.3
+            self._new_rating = self._map_rating + 0.3
         elif FinalPercent >= 97:
-            new_rating = self._map_rating +0.2
+            self._new_rating = self._map_rating +0.2
         elif FinalPercent >=95:
-            new_rating = self._map_rating +0.1
+            self._new_rating = self._map_rating +0.1
         elif FinalPercent >=93:
-            new_rating = self._map_rating 
+            self._new_rating = self._map_rating 
         elif 93 >= FinalPercent and FinalPercent >= 85:
-            new_rating = self._map_rating - 0.1
+            self._new_rating = self._map_rating - 0.1
         else:
-            new_rating = self._map_rating - 0.2
+            self._new_rating = self._map_rating - 0.2
 
         
-        print('new star rating for recommend:', new_rating)
+        print('new star rating for recommend:', self._new_rating)
+
+    def FindMap(self):
+        abc = []
+        APIRecommend = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&since=2013-05-15')
+        abc = APIRecommend.json()
+
+        for i in abc:
+            if (self._new_rating -0.1) < float(i['difficultyrating']) < (self._new_rating +0.1):
+                print(i)
+                
+
+
         
 
  

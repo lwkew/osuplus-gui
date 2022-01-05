@@ -39,8 +39,10 @@ class MainWindow(QMainWindow, userinfo, recommendinfo):
             row = 0
             songs= userinfo.GetRecentScore()
             m = recommendinfo()
+            
             m.printer()
             m.CalculateMapStars()
+            m.FindMap()
             self.ui.Recent_Maps.setRowCount(len(songs))
             
             for song in songs:
@@ -56,8 +58,9 @@ class MainWindow(QMainWindow, userinfo, recommendinfo):
             for test in title:
                 self.ui.Recent_Maps.setItem(row, 0, QtWidgets.QTableWidgetItem(test))
                 row = row+1
-        
+            
         loadmaps()
+        
         
         app.setStyleSheet('QWidget { background-image: url(bg.png); } QHeaderView::section { background-color: rgba(0,0,0,0); } QTableWidget QTableCornerButton::section {background-color: rgba(0,0,0,0); }')
         
