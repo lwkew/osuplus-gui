@@ -1,3 +1,4 @@
+from main import *
 from typing import Final
 import requests
 global recentscore
@@ -90,18 +91,35 @@ class recommendinfo():
 
     def FindMap(self):
         abc = []
-        APIRecommend = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&since=2013-05-15&limit=100')
-        abc = APIRecommend.json()
-        possible_recommend = []
-        for i in abc:
-            if (self._new_rating -0.1) < float(i['difficultyrating']) < (self._new_rating +0.1):
-                possible_recommend.append(i)
-
+        dateloop = 2010
+        
+        for j in range (0,10):
+            dateloop = dateloop +1
+            APIRecommend = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=500&since=' + str(dateloop) + '-01-01')
+            abc = APIRecommend.json()
+            possible_recommend = []
+            for i in abc:
+                if (self._new_rating -0.1) < float(i['difficultyrating']) < (self._new_rating +0.1):
+                    possible_recommend.append(i)
         return possible_recommend
-        
+
+    # def ModChoice(self):
+    #     m=MainWindow()
+    #     if m.CheckBox() == 1:
+    #         self._new_rating = self._new_rating -0.2
+    #     if m.Check_Box() ==2:
+    #         self._new_rating = self._new_rating 
+    #     if m.Check_Box() == 3:
+    #         self._new_rating = self._new_rating -2
+    #     if m.Check_Box() == 4:
+    #         self._new_rating = self._new_rating -3
+    
+
         
 
-
+# m=recommendinfo()
+# m.CalculateMapStars()
+# m.FindMap()
         
 
  

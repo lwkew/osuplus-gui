@@ -1,4 +1,4 @@
-from data import recommendinfo, userinfo
+import random
 import sys
 import requests
 import platform
@@ -9,8 +9,12 @@ from PySide2.QtWidgets import *
 
 from app_modules import *
 
+from data import recommendinfo, userinfo
 
-class MainWindow(QMainWindow, userinfo, recommendinfo):
+
+
+class MainWindow(QMainWindow, userinfo, recommendinfo, QWidget):
+    
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
@@ -36,15 +40,11 @@ class MainWindow(QMainWindow, userinfo, recommendinfo):
         
 
         def loadmaps():
+            
             row = 0
             songs= userinfo.GetRecentScore()
-            m = recommendinfo()
             
-            m.printer()
-            m.CalculateMapStars()
-            m.FindMap()
             self.ui.Recent_Maps.setRowCount(len(songs))
-            
             for song in songs:
                 self.ui.Recent_Maps.setItem(row, 1, QtWidgets.QTableWidgetItem(song['count300']))
                 self.ui.Recent_Maps.setItem(row, 2, QtWidgets.QTableWidgetItem(song['count100']))
@@ -59,27 +59,54 @@ class MainWindow(QMainWindow, userinfo, recommendinfo):
                 self.ui.Recent_Maps.setItem(row, 0, QtWidgets.QTableWidgetItem(test))
                 row = row+1
             
-        #def GetChoice():
 
         def recommendMaps():
-            
+            number = 0
             recommend_songs=[]
             m=recommendinfo()
+            m.printer()
             m.CalculateMapStars()
+            #m.ModChoice()
             recommend_songs = m.FindMap()
-            self.ui.title_5 = QLabel('Arial Font', self)
+            number = random.randint(0,len(recommend_songs))
+
+            self.ui.title_5.setText(str(recommend_songs[number]['title']))
+            self.ui.title_6.setText(str(recommend_songs[number]['difficultyrating']))
+            self.ui.title_7.setText('osu://s/'+ str(recommend_songs[number]['beatmapset_id']))
+         
+            
+            string1 = ('osu://s/'+ str(recommend_songs[number]['beatmapset_id']))
+            
+            
+            # linkTemplate = '<a href={0}>{1}</a>'
+            # self.ui.title_7 = HyperLinkLabel(self)
+            # self.ui.title_7.setText(linkTemplate.format(string1, 'link'))
+
+            
 
 
-            self.ui.title_5.setText(str(recommend_songs[0]['title']))
-            self.ui.title_6.setText(str(recommend_songs[0]['difficultyrating']))
-            self.ui.title_7.setText('osu://s/'+ str(recommend_songs[0]['beatmapset_id']))
 
-
-
+        def Check_Box():
+            ModChoice = 1
+            if self.ui.HardRock.isChecked == True:
+                ModChoice == 1
+            if self.ui.Hidden.isChecked == True:
+                ModChoice == 2
+            if self.ui.DoubleTime.isChecked == True:
+                ModChoice == 3
+            if self.ui.Flashlight.isChecked == True:
+                ModChoice == 4
+            return ModChoice
+        
+        
+        
+        Check_Box()
         recommendMaps()
         loadmaps()
         
         
+
+
         app.setStyleSheet('QWidget { background-image: url(bg.png); } QHeaderView::section { background-color: rgba(0,0,0,0); } QTableWidget QTableCornerButton::section {background-color: rgba(0,0,0,0); }')
         
     
@@ -160,3 +187,11 @@ if __name__ == "__main__":
     QtGui.QFontDatabase.addApplicationFont('fonts/segoeuib.ttf')
     window = MainWindow()
     sys.exit(app.exec_())
+
+
+# class HyperLinkLabel(QLabel):
+#     def __init__(self, parent=None):
+#         super().__init__()
+#         self.setStyleSheet('font-size: 50px')
+#         self.setOpenExternalLinks(True)
+#         self.setParent(parent)
