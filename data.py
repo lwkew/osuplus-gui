@@ -90,13 +90,16 @@ class recommendinfo():
 
     def FindMap(self):
         abc = []
-        APIRecommend = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&since=2013-05-15')
+        APIRecommend = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&since=2013-05-15&limit=100')
         abc = APIRecommend.json()
-
+        possible_recommend = []
         for i in abc:
             if (self._new_rating -0.1) < float(i['difficultyrating']) < (self._new_rating +0.1):
-                print(i)
-                
+                possible_recommend.append(i)
+
+        return possible_recommend
+        
+        
 
 
         

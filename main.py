@@ -59,6 +59,24 @@ class MainWindow(QMainWindow, userinfo, recommendinfo):
                 self.ui.Recent_Maps.setItem(row, 0, QtWidgets.QTableWidgetItem(test))
                 row = row+1
             
+        #def GetChoice():
+
+        def recommendMaps():
+            
+            recommend_songs=[]
+            m=recommendinfo()
+            m.CalculateMapStars()
+            recommend_songs = m.FindMap()
+            self.ui.title_5 = QLabel('Arial Font', self)
+
+
+            self.ui.title_5.setText(str(recommend_songs[0]['title']))
+            self.ui.title_6.setText(str(recommend_songs[0]['difficultyrating']))
+            self.ui.title_7.setText('osu://s/'+ str(recommend_songs[0]['beatmapset_id']))
+
+
+
+        recommendMaps()
         loadmaps()
         
         
