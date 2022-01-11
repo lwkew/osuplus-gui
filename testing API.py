@@ -4,8 +4,11 @@ percent = 97
 rating = 5.5
 
 newrating = 5.6
+abc=[]
 
-
+req5 = requests.get('https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=20&u=lwke')
+abc=req5.json()
+print(abc)
 
 req1 = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=2&mods=64&mode=0')
 tester = req1.json()
@@ -16,9 +19,9 @@ req2 = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b7
 tester1= req2.json()
 #print(tester1)
 
-APIRecommend = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&since=2014-05-16')
-abc = APIRecommend.json()
-print (abc)
+# APIRecommend = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&since=2014-05-16')
+# abc = APIRecommend.json()
+# print (abc)
 
 # for i in abc:
 #     print (i)

@@ -1535,7 +1535,7 @@ QPushButton:pressed {
                    <string notr="true">background: transparent;</string>
                   </property>
                   <property name="currentIndex">
-                   <number>2</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="page_home">
                    <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -1611,6 +1611,13 @@ QPushButton:pressed {
                        </size>
                       </property>
                      </spacer>
+                    </item>
+                    <item alignment="Qt::AlignHCenter">
+                     <widget class="QLineEdit" name="username">
+                      <property name="alignment">
+                       <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                      </property>
+                     </widget>
                     </item>
                     <item alignment="Qt::AlignHCenter">
                      <widget class="QPushButton" name="btn_go">
@@ -1823,6 +1830,18 @@ QHeaderView::section:vertical
                        <column>
                         <property name="text">
                          <string>Miss Count</string>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>Aller</family>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                       </column>
+                       <column>
+                        <property name="text">
+                         <string>Accuracy</string>
                         </property>
                         <property name="font">
                          <font>

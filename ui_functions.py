@@ -43,10 +43,12 @@ class UIFunctions(MainWindow):
             self.ui.btn_maximize_restore.hide()
 
     def toggleMenu(self, maxWidth, enable):
+        
         if enable:
             width = self.ui.frame_left_menu.width()
             maxExtend = maxWidth
             standard = 70
+
 
             if width == 70:
                 widthExtended = maxExtend

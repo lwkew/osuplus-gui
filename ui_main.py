@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'GUI_BASEsSeCva.ui'
+## Form generated from reading UI file 'GUI_BASEQcOzkx.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -713,6 +713,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_10.addItem(self.verticalSpacer)
 
+        self.username = QLineEdit(self.page_home)
+        self.username.setObjectName(u"username")
+        self.username.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+
+        self.verticalLayout_10.addWidget(self.username, 0, Qt.AlignHCenter)
+
         self.btn_go = QPushButton(self.page_home)
         self.btn_go.setObjectName(u"btn_go")
         self.btn_go.setEnabled(True)
@@ -760,8 +766,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.addWidget(self.title_2)
 
         self.Recent_Maps = QTableWidget(self.verticalLayoutWidget)
-        if (self.Recent_Maps.columnCount() < 5):
-            self.Recent_Maps.setColumnCount(5)
+        if (self.Recent_Maps.columnCount() < 6):
+            self.Recent_Maps.setColumnCount(6)
         font7 = QFont()
         font7.setFamily(u"Aller")
         font7.setBold(True)
@@ -781,6 +787,9 @@ class Ui_MainWindow(object):
         __qtablewidgetitem4 = QTableWidgetItem()
         __qtablewidgetitem4.setFont(font7);
         self.Recent_Maps.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        __qtablewidgetitem5.setFont(font7);
+        self.Recent_Maps.setHorizontalHeaderItem(5, __qtablewidgetitem5)
         self.Recent_Maps.setObjectName(u"Recent_Maps")
         self.Recent_Maps.setStyleSheet(u"QTableWidget {\n"
 "    background-color: rgb(39, 44, 54);\n"
@@ -1031,7 +1040,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1070,6 +1079,8 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"50", None));
         ___qtablewidgetitem4 = self.Recent_Maps.horizontalHeaderItem(4)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Miss Count", None));
+        ___qtablewidgetitem5 = self.Recent_Maps.horizontalHeaderItem(5)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Accuracy", None));
         self.HardRock.setText(QCoreApplication.translate("MainWindow", u"hard rock", None))
         self.DoubleTime.setText(QCoreApplication.translate("MainWindow", u"double time", None))
         self.Hidden.setText(QCoreApplication.translate("MainWindow", u"hidden", None))

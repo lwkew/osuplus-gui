@@ -1,3 +1,5 @@
+# from _typeshed import Self
+import settings
 import random
 import sys
 import requests
@@ -15,7 +17,7 @@ from data import recommendinfo, userinfo
 
 class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
     
-    def __init__(self, parent=None):
+    def __init__(self):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -33,45 +35,74 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
         UIFunctions.selectStandardMenu(self, "btn_home")
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_home)
         self.ui.Recent_Maps.setColumnWidth(0,460)
-        self.ui.Recent_Maps.setColumnWidth(1,100)
-        self.ui.Recent_Maps.setColumnWidth(2,100)
-        self.ui.Recent_Maps.setColumnWidth(3,100)
-        self.ui.Recent_Maps.setColumnWidth(4,80)
+        self.ui.Recent_Maps.setColumnWidth(1,70)
+        self.ui.Recent_Maps.setColumnWidth(2,70)
+        self.ui.Recent_Maps.setColumnWidth(3,70)
+        self.ui.Recent_Maps.setColumnWidth(4,70)
+        self.ui.Recent_Maps.setColumnWidth(5,70)
         
 
+
+
+        
+
+        
+        
         def loadmaps():
             
             row = 0
             songs= userinfo.GetRecentScore()
             
+        
             self.ui.Recent_Maps.setRowCount(len(songs))
+
             for song in songs:
                 self.ui.Recent_Maps.setItem(row, 1, QtWidgets.QTableWidgetItem(song['count300']))
                 self.ui.Recent_Maps.setItem(row, 2, QtWidgets.QTableWidgetItem(song['count100']))
                 self.ui.Recent_Maps.setItem(row, 3, QtWidgets.QTableWidgetItem(song['count50']))
                 self.ui.Recent_Maps.setItem(row, 4, QtWidgets.QTableWidgetItem(song['countmiss']))
+                
                 row = row+1
             
             title= userinfo.GetRecentTitle()
             row = 0
-            
             for test in title:
                 self.ui.Recent_Maps.setItem(row, 0, QtWidgets.QTableWidgetItem(test))
                 row = row+1
             
+            songs2 = userinfo.GetRecentAccuracy()
+            row = 0
+
+            for song1 in songs2:
+                self.ui.Recent_Maps.setItem(row, 5, QtWidgets.QTableWidgetItem(str(song1)+'%'))
+                row = row+1
+                
+        
+        
+        def returnuser():
+            self._text = self.ui.username.text()
+
+            print(self._text)
+        
+        self.ui.username.setPlaceholderText("ENTER USERNAME")
+        self.ui.username.editingFinished.connect(returnuser)
 
         def recommendMaps():
             number = 0
             recommend_songs=[]
+            
             m=recommendinfo()
             m.printer()
             m.CalculateMapStars()
-            #m.ModChoice()
+            
+            checkbox()
+            m.mod_change()
+
             recommend_songs = m.FindMap()
             number = random.randint(0,len(recommend_songs)-1)
 
             self.ui.title_5.setText(str(recommend_songs[number]['title']))
-            self.ui.title_6.setText(str(recommend_songs[number]['difficultyrating']))
+            self.ui.title_6.setText(str(round(float(recommend_songs[number]['difficultyrating']),2)))
             self.ui.title_7.setText('osu://s/'+ str(recommend_songs[number]['beatmapset_id']))
          
             
@@ -81,29 +112,28 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
             self.ui.title_7.setText(linkTemplate.format(string1, 'map link'))
 
             
+        def checkbox():
 
-
-
-        def Check_Box():
-            ModChoice = 0
-            
-            if self.ui.HardRock.isChecked == True:
-                ModChoice += 1
-            if self.ui.Hidden.isChecked == False:
-                ModChoice += 2
-            if self.ui.DoubleTime.isChecked == True:
-                ModChoice += 3
-            if self.ui.Flashlight.isChecked == True:
-                ModChoice += 4
-
-            print(ModChoice)
-            return ModChoice
+            if self.ui.HardRock.isChecked() == True:
+                settings.ModChoice = 1
+                print('mod choice: Hard Rock')
+            elif self.ui.Hidden.isChecked() == True:
+                settings.ModChoice = 2
+                print('mod choice: Hidden')
+            elif self.ui.DoubleTime.isChecked() == True:  
+                settings.ModChoice = 3
+                print('mod choice: Double Time')
+            elif self.ui.Flashlight.isChecked() == True:
+                settings.ModChoice = 4
+                print('mod choice: Flashlight')
         
         
+       
+
+
         
-        recommendMaps()
-        loadmaps()
-        self.ui.btn_submit.clicked.connect(Check_Box)
+        self.ui.btn_submit.clicked.connect(recommendMaps)
+       
         
 
 
@@ -112,8 +142,10 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
     
         
         def scores_click():
-                self.ui.stackedWidget.setCurrentIndex(1)
-        
+
+            self.ui.stackedWidget.setCurrentIndex(1)
+            settings.request1 = requests.get(f'https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=20&u={self._text}')
+            self.ui.btn_go.clicked.connect(loadmaps)
         self.ui.btn_go.clicked.connect(lambda:scores_click())
 
         def recommend_click():
@@ -189,5 +221,18 @@ if __name__ == "__main__":
     sys.exit(app.exec_())
 
 
+# class transferdata(MainWindow): 
+#     def __init__(self):
+#         mod = 0
 
-        
+#     def take():
+#         super().checkbox()
+#         mod = checkbox()
+#         print(mod)
+
+
+
+# m=transferdata
+
+# m.take()
+#  self.ui.title_6.setText(str(float(recommend_songs[number]['difficultyrating'])-100))   

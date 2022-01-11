@@ -1,14 +1,15 @@
-from main import *
+
+import settings
 from typing import Final
 import requests
 global recentscore
 global recentmap
-global req1
+
 #09fe03d3b80c29a27e0b75b07e0c483c54657817
 
 
 #GLOBAL REQUEST FOR THE DATA FROM THE PLAYER IN THE GAME
-req1 = requests.get('https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=20&u=lwke')
+#settings.request1 = requests.get('https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=20&u=lwke')
 
 recentscore = []
 recentmap = []
@@ -19,11 +20,11 @@ class userinfo():
         pass
 
     def GetRecentScore():
-        recentscore = req1.json()
+        recentscore = settings.request1.json()
         return recentscore
 
     def GetRecentTitle():
-        recentscore=req1.json()
+        recentscore=settings.request1.json()
         titlelist=[]
         #LOOPING THROUGH THE LAST 20 RECENT PLAYS AND MAKING THEM AVAILABLE TO BE INPUT INTO THE TABLE
         for i in range (len(recentscore)):
@@ -34,6 +35,37 @@ class userinfo():
             titlelist.append(recentmap[0]['title'])
         return titlelist
 
+    settings.init()
+    
+    def GetRecentAccuracy():
+        recentscore = settings.request1.json()
+        current300 = 0
+        current100 = 0
+        current50 = 0
+        miss = 0
+        temp = 0
+        
+        for i in range (len(recentscore)):
+            latest_test = recentscore[i]
+            current300 = int(latest_test['count300'])
+            current100 = int(latest_test['count100'])
+            current50 = int(latest_test['count50'])
+            miss = int(latest_test['countmiss'])
+            
+        
+            
+            add = (300*(current300)) + (100*(current100)) + (50*(current50))
+            divide = (300*(current300 + current100 + current50 + miss))
+            
+            temp = round(((add / divide)*100),2)
+            settings.accuracy.append(temp)
+            
+        return settings.accuracy
+
+
+
+            
+
 
 class recommendinfo():
     def __init__(self):
@@ -41,7 +73,7 @@ class recommendinfo():
         self._Latest_300 = 0
         self._Best300 = 0
         self._map_rating = 0
-        recentscore = req1.json()
+        recentscore = settings.request1.json()
         latest_score1 = recentscore[0]
         self._Latest_300 = int(latest_score1['count300'])
         
@@ -57,7 +89,6 @@ class recommendinfo():
         pull2 = recentmap1[0]
         self._map_rating = float(pull2['difficultyrating'])
         
-        #APIRecommend = 
 
     def printer(self):
         print('map rating:', self._map_rating)
@@ -103,23 +134,27 @@ class recommendinfo():
                     possible_recommend.append(i)
         return possible_recommend
 
-    # def ModChoice(self):
-    #     m=MainWindow()
-    #     if m.CheckBox() == 1:
-    #         self._new_rating = self._new_rating -0.2
-    #     if m.Check_Box() ==2:
-    #         self._new_rating = self._new_rating 
-    #     if m.Check_Box() == 3:
-    #         self._new_rating = self._new_rating -2
-    #     if m.Check_Box() == 4:
-    #         self._new_rating = self._new_rating -3
-    
 
+    def mod_change(self):
+        if settings.ModChoice == 1:
+            self._new_rating -= 0.2
+        if settings.ModChoice ==2:
+            pass  
+        if settings.ModChoice == 3:
+            self._new_rating -= 2
+        if settings.ModChoice == 4:
+            self._new_rating -= 3
         
+        return self._new_rating
 
-# m=recommendinfo()
-# m.CalculateMapStars()
-# m.FindMap()
+
+
+
+
+
+ 
+
+
         
 
  
