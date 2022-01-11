@@ -13,9 +13,9 @@ from data import recommendinfo, userinfo
 
 
 
-class MainWindow(QMainWindow, userinfo, recommendinfo, QWidget):
+class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
     
-    def __init__(self):
+    def __init__(self, parent=None):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -28,7 +28,7 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QWidget):
         self.setMinimumSize(startSize)
         self.ui.btn_toggle_menu.clicked.connect(lambda: UIFunctions.toggleMenu(self, 220, True))
         self.ui.stackedWidget.setMinimumWidth(20)
-        UIFunctions.addNewMenu(self, "osu!plus", "btn_home", "url(:/16x16/icons/16x16/cil-mood-very-good.png)", True)
+        UIFunctions.addNewMenu(self, "osu!plus", "btn_home", "url(:/16x16/icons/16x16/cil-home.png)", True)
         UIFunctions.addNewMenu(self, "mod selection", "btn_widgets", "url(:/16x16/icons/16x16/cil-equalizer.png)", True)
         UIFunctions.selectStandardMenu(self, "btn_home")
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_home)
@@ -68,7 +68,7 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QWidget):
             m.CalculateMapStars()
             #m.ModChoice()
             recommend_songs = m.FindMap()
-            number = random.randint(0,len(recommend_songs))
+            number = random.randint(0,len(recommend_songs)-1)
 
             self.ui.title_5.setText(str(recommend_songs[number]['title']))
             self.ui.title_6.setText(str(recommend_songs[number]['difficultyrating']))
@@ -76,34 +76,34 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QWidget):
          
             
             string1 = ('osu://s/'+ str(recommend_songs[number]['beatmapset_id']))
-            
-            
-            # linkTemplate = '<a href={0}>{1}</a>'
-            # self.ui.title_7 = HyperLinkLabel(self)
-            # self.ui.title_7.setText(linkTemplate.format(string1, 'link'))
+            linkTemplate = '<a href={0}>{1}</a>'
+            self.ui.title_7.setOpenExternalLinks(True)
+            self.ui.title_7.setText(linkTemplate.format(string1, 'map link'))
 
             
 
 
 
         def Check_Box():
-            ModChoice = 1
+            ModChoice = 0
+            
             if self.ui.HardRock.isChecked == True:
-                ModChoice == 1
-            if self.ui.Hidden.isChecked == True:
-                ModChoice == 2
+                ModChoice += 1
+            if self.ui.Hidden.isChecked == False:
+                ModChoice += 2
             if self.ui.DoubleTime.isChecked == True:
-                ModChoice == 3
+                ModChoice += 3
             if self.ui.Flashlight.isChecked == True:
-                ModChoice == 4
+                ModChoice += 4
+
+            print(ModChoice)
             return ModChoice
         
         
         
-        Check_Box()
         recommendMaps()
         loadmaps()
-        
+        self.ui.btn_submit.clicked.connect(Check_Box)
         
 
 
@@ -189,9 +189,5 @@ if __name__ == "__main__":
     sys.exit(app.exec_())
 
 
-# class HyperLinkLabel(QLabel):
-#     def __init__(self, parent=None):
-#         super().__init__()
-#         self.setStyleSheet('font-size: 50px')
-#         self.setOpenExternalLinks(True)
-#         self.setParent(parent)
+
+        
