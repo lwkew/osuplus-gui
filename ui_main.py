@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'GUI_BASEQcOzkx.ui'
+## Form generated from reading UI file 'GUI_BASEZiVdwR.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -715,7 +715,7 @@ class Ui_MainWindow(object):
 
         self.username = QLineEdit(self.page_home)
         self.username.setObjectName(u"username")
-        self.username.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.username.setAlignment(Qt.AlignBottom|Qt.AlignLeading|Qt.AlignLeft)
 
         self.verticalLayout_10.addWidget(self.username, 0, Qt.AlignHCenter)
 
@@ -741,6 +741,11 @@ class Ui_MainWindow(object):
 "}")
 
         self.verticalLayout_10.addWidget(self.btn_go, 0, Qt.AlignHCenter)
+
+        self.loading = QLabel(self.page_home)
+        self.loading.setObjectName(u"loading")
+
+        self.verticalLayout_10.addWidget(self.loading, 0, Qt.AlignHCenter)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
@@ -1068,6 +1073,7 @@ class Ui_MainWindow(object):
         self.title.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:72pt; font-weight:600;\">osu!plus</span></p></body></html>", None))
         self.maintext.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>osu!plus is an program that allows you to see your latest scores</p><p>and enables easy comparison</p><p>It also has a recommendation feature that uses your personal scores </p><p>to calculate the best recommendation</p><p>to begin, click the 'Get Scores' button below</p></body></html>", None))
         self.btn_go.setText(QCoreApplication.translate("MainWindow", u"Get Scores", None))
+        self.loading.setText("")
         self.title_2.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:28pt;\">recently played beatmaps</span></p></body></html>", None))
         ___qtablewidgetitem = self.Recent_Maps.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Song Name", None));

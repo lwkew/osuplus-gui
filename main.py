@@ -6,17 +6,14 @@ import requests
 import platform
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
-from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient, QMovie)
 from PySide2.QtWidgets import *
-
+from PIL import Image
 from app_modules import *
-
 from data import recommendinfo, userinfo
 
 
-
 class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
-    
     def __init__(self):
         QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
@@ -40,12 +37,11 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
         self.ui.Recent_Maps.setColumnWidth(3,70)
         self.ui.Recent_Maps.setColumnWidth(4,70)
         self.ui.Recent_Maps.setColumnWidth(5,70)
-        
-
-
-
-        
-
+        loadingGIF = QMovie("loading.gif")
+        self.ui.loading.setMovie(loadingGIF)
+        size = QSize(1,1)
+        loadingGIF.setScaledSize(size)
+        loadingGIF.start()
         
         
         def loadmaps():
@@ -77,7 +73,6 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
                 self.ui.Recent_Maps.setItem(row, 5, QtWidgets.QTableWidgetItem(str(song1)+'%'))
                 row = row+1
                 
-        
         
         def returnuser():
             self._text = self.ui.username.text()
@@ -111,7 +106,7 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
             self.ui.title_7.setOpenExternalLinks(True)
             self.ui.title_7.setText(linkTemplate.format(string1, 'map link'))
 
-            
+          
         def checkbox():
 
             if self.ui.HardRock.isChecked() == True:
@@ -126,26 +121,20 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
             elif self.ui.Flashlight.isChecked() == True:
                 settings.ModChoice = 4
                 print('mod choice: Flashlight')
-        
-        
-       
-
 
         
         self.ui.btn_submit.clicked.connect(recommendMaps)
        
-        
-
-
         app.setStyleSheet('QWidget { background-image: url(bg.png); } QHeaderView::section { background-color: rgba(0,0,0,0); } QTableWidget QTableCornerButton::section {background-color: rgba(0,0,0,0); }')
         
-    
-        
         def scores_click():
-
             self.ui.stackedWidget.setCurrentIndex(1)
+            size = QSize(50,50)
+            loadingGIF.setScaledSize(size)
+            # self.ui.btn_go.hide()
             settings.request1 = requests.get(f'https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=20&u={self._text}')
             self.ui.btn_go.clicked.connect(loadmaps)
+
         self.ui.btn_go.clicked.connect(lambda:scores_click())
 
         def recommend_click():
@@ -167,6 +156,7 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
         self.show()
 
     def Button(self):
+
         btnWidget = self.sender()
 
         if btnWidget.objectName() == "btn_home":
@@ -212,6 +202,8 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
 
     def resizeFunction(self):
         print('Height: ' + str(self.height()) + ' | Width: ' + str(self.width()))
+    
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

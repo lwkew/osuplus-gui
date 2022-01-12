@@ -1615,7 +1615,7 @@ QPushButton:pressed {
                     <item alignment="Qt::AlignHCenter">
                      <widget class="QLineEdit" name="username">
                       <property name="alignment">
-                       <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
                       </property>
                      </widget>
                     </item>
@@ -1660,6 +1660,13 @@ QPushButton:pressed {
                       </property>
                       <property name="text">
                        <string>Get Scores</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item alignment="Qt::AlignHCenter">
+                     <widget class="QLabel" name="loading">
+                      <property name="text">
+                       <string/>
                       </property>
                      </widget>
                     </item>
