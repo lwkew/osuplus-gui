@@ -80,9 +80,9 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
         
         
         def returnuser():
-            self._text = self.ui.username.text()
+            self._username = self.ui.username.text()
 
-            print(self._text)
+            print(self._username)
         
         self.ui.username.setPlaceholderText("ENTER USERNAME")
         self.ui.username.editingFinished.connect(returnuser)
@@ -111,6 +111,7 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
             self.ui.title_7.setOpenExternalLinks(True)
             self.ui.title_7.setText(linkTemplate.format(string1, 'map link'))
 
+            self.ui.stackedWidget.setCurrentIndex(3)
             
         def checkbox():
 
@@ -134,28 +135,17 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
         
         self.ui.btn_submit.clicked.connect(recommendMaps)
         self.ui.btn_go.clicked.connect(lambda:scores_click())
-        self.ui.btn_submit.clicked.connect(lambda:recommend_click())
-       
-        
-
+        self.ui.btn_go.clicked.connect(loadmaps)
 
         app.setStyleSheet('QWidget { background-image: url(bg.png); } QHeaderView::section { background-color: rgba(0,0,0,0); } QTableWidget QTableCornerButton::section {background-color: rgba(0,0,0,0); }')
-        
-    
+       
         
         def scores_click():
-
-            
-            settings.request1 = requests.get('https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=20&u=' + str(self._text))
-            self.ui.btn_go.clicked.connect(loadmaps)
+            settings.request1 = requests.get('https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=20&u=' + str(self._username))
             self.ui.stackedWidget.setCurrentIndex(1)
 
 
-        def recommend_click():
-                self.ui.stackedWidget.setCurrentIndex(3)
-            
-        
-
+       
         def moveWindow(event):
             if UIFunctions.returStatus() == 1:
                 UIFunctions.maximize_restore(self)
@@ -216,26 +206,10 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
     def resizeFunction(self):
         print('Height: ' + str(self.height()) + ' | Width: ' + str(self.width()))
 
+    
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     QtGui.QFontDatabase.addApplicationFont('fonts/segoeui.ttf')
     QtGui.QFontDatabase.addApplicationFont('fonts/segoeuib.ttf')
     window = MainWindow()
     sys.exit(app.exec_())
-
-
-# class transferdata(MainWindow): 
-#     def __init__(self):
-#         mod = 0
-
-#     def take():
-#         super().checkbox()
-#         mod = checkbox()
-#         print(mod)
-
-
-
-# m=transferdata
-
-# m.take()
-#  self.ui.title_6.setText(str(float(recommend_songs[number]['difficultyrating'])-100))   
