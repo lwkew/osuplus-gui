@@ -133,6 +133,8 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
 
         
         self.ui.btn_submit.clicked.connect(recommendMaps)
+        self.ui.btn_go.clicked.connect(lambda:scores_click())
+        self.ui.btn_submit.clicked.connect(lambda:recommend_click())
        
         
 
@@ -143,15 +145,16 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
         
         def scores_click():
 
-            self.ui.stackedWidget.setCurrentIndex(1)
-            settings.request1 = requests.get(f'https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=20&u={self._text}')
+            
+            settings.request1 = requests.get('https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=20&u=' + str(self._text))
             self.ui.btn_go.clicked.connect(loadmaps)
-        self.ui.btn_go.clicked.connect(lambda:scores_click())
+            self.ui.stackedWidget.setCurrentIndex(1)
+
 
         def recommend_click():
                 self.ui.stackedWidget.setCurrentIndex(3)
             
-        self.ui.btn_submit.clicked.connect(lambda:recommend_click())
+        
 
         def moveWindow(event):
             if UIFunctions.returStatus() == 1:

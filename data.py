@@ -75,12 +75,15 @@ class recommendinfo():
         self._map_rating = 0
         recentscore = settings.request1.json()
         latest_score1 = recentscore[0]
+        print(latest_score1)
         self._Latest_300 = int(latest_score1['count300'])
         
         
         BeatmapID=latest_score1['beatmap_id']
-        APIBest = requests.get('https://osu.ppy.sh/api/get_scores?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=1&b=' + str(BeatmapID))
+        APIBest = requests.get(f'https://osu.ppy.sh/api/get_scores?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=1&b={str(BeatmapID)}')
+        print(BeatmapID)
         BestScore=APIBest.json()
+        print(BestScore)
         Pull1 = BestScore[0]
         self._Best300 = int(Pull1['count300'])
 
