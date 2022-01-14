@@ -34,6 +34,7 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
         UIFunctions.addNewMenu(self, "mod selection", "btn_widgets", "url(:/16x16/icons/16x16/cil-equalizer.png)", True)
         UIFunctions.selectStandardMenu(self, "btn_home")
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_home)
+        #DEFINING THE WIDTH OF THE COLUMNs IN THE TABLE
         self.ui.Recent_Maps.setColumnWidth(0,460)
         self.ui.Recent_Maps.setColumnWidth(1,70)
         self.ui.Recent_Maps.setColumnWidth(2,70)
@@ -52,11 +53,10 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
             
             row = 0
             songs= userinfo.GetRecentScore()
-            
-        
             self.ui.Recent_Maps.setRowCount(len(songs))
 
             for song in songs:
+                #LOOPING THROUGH THE LATEST PLAYS AND INPUTTING THE COUNTS OF THE 300, 100, 50 AND MISS COUNTS INTO THE REQUIRED TABLES
                 self.ui.Recent_Maps.setItem(row, 1, QtWidgets.QTableWidgetItem(song['count300']))
                 self.ui.Recent_Maps.setItem(row, 2, QtWidgets.QTableWidgetItem(song['count100']))
                 self.ui.Recent_Maps.setItem(row, 3, QtWidgets.QTableWidgetItem(song['count50']))
@@ -67,6 +67,7 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
             title= userinfo.GetRecentTitle()
             row = 0
             for test in title:
+                #LOOPING THROUGH THE TITLES AND PLACING THEM IN THE FORST COLUMN OF THE TABLE
                 self.ui.Recent_Maps.setItem(row, 0, QtWidgets.QTableWidgetItem(test))
                 row = row+1
             
@@ -74,47 +75,48 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
             row = 0
 
             for song1 in songs2:
+                #LOOPING THROUGH THE ACCURACY CALCULATIONS AND ADDING THEM INTO THE TABLE
                 self.ui.Recent_Maps.setItem(row, 5, QtWidgets.QTableWidgetItem(str(song1)+'%'))
                 row = row+1
                 
         
         
         def returnuser():
+            #TAKING THE USERNAME READING FROM THE TEXT BOX
             self._username = self.ui.username.text()
-
-            print(self._username)
         
-        self.ui.username.setPlaceholderText("ENTER USERNAME")
-        self.ui.username.editingFinished.connect(returnuser)
+        self.ui.username.setPlaceholderText("ENTER USERNAME")#PLACEHOLDER TEXT
+        self.ui.username.editingFinished.connect(returnuser)#EDITING FINISHED TAKES THE INPUT AFTER THE TEXT BOX IS CLICKED OFF OF
 
         def recommendMaps():
             number = 0
             recommend_songs=[]
             
             m=recommendinfo()
-            m.printer()
             m.CalculateMapStars()
             
             checkbox()
             m.mod_change()
 
             recommend_songs = m.FindMap()
+            print(recommend_songs)
             number = random.randint(0,len(recommend_songs)-1)
 
-            self.ui.title_5.setText(str(recommend_songs[number]['title']))
-            self.ui.title_6.setText(str(round(float(recommend_songs[number]['difficultyrating']),2)))
-            self.ui.title_7.setText('osu://s/'+ str(recommend_songs[number]['beatmapset_id']))
+            #PLACING THE RECOMMENDATION DATA ON THE SCREEN
+            self.ui.title_5.setText(str(recommend_songs[number]['title']))#RECOMMENDATION TITLE
+            self.ui.title_6.setText(str(round(float(recommend_songs[number]['difficultyrating']),2))+'*')#RECOMMENDATION STAR RATING
+            #self.ui.title_7.setText('osu://s/'+ str(recommend_songs[number]['beatmapset_id']))
          
-            
-            string1 = ('osu://s/'+ str(recommend_songs[number]['beatmapset_id']))
+            #CREATING THE INTERACTIVE MAP LINK
+            string1 = ('osu://s/'+ str(recommend_songs[number]['beatmapset_id']))#RECOMMENDATION MAP LINK
             linkTemplate = '<a href={0}>{1}</a>'
-            self.ui.title_7.setOpenExternalLinks(True)
-            self.ui.title_7.setText(linkTemplate.format(string1, 'map link'))
+            self.ui.title_7.setOpenExternalLinks(True)#MAKING THE LINK CLICKABLE
+            self.ui.title_7.setText(linkTemplate.format(string1, 'map link'))#ADDING TO THE SCREEN
 
-            self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.stackedWidget.setCurrentIndex(3)#MOVING SCREEN INDEX TO 3
             
         def checkbox():
-
+            #CHECKING THE CHECK BOX FOR THE MOD CHOICE
             if self.ui.HardRock.isChecked() == True:
                 settings.ModChoice = 1
                 print('mod choice: Hard Rock')
@@ -132,17 +134,19 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
        
 
 
-        
+        #COMMANDS TO HAVE A FUNCTION RUN AFTER A BUTTON PRESS
         self.ui.btn_submit.clicked.connect(recommendMaps)
         self.ui.btn_go.clicked.connect(lambda:scores_click())
         self.ui.btn_go.clicked.connect(loadmaps)
 
+        #DEBUGGING TABLE
         app.setStyleSheet('QWidget { background-image: url(bg.png); } QHeaderView::section { background-color: rgba(0,0,0,0); } QTableWidget QTableCornerButton::section {background-color: rgba(0,0,0,0); }')
        
         
         def scores_click():
-            settings.request1 = requests.get('https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=20&u=' + str(self._username))
-            self.ui.stackedWidget.setCurrentIndex(1)
+            #API REQUEST BASED ON THE USERNAME INPUT FROM THE CODE
+            settings.request1 = requests.get(f'https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=20&u={str(self._username)}')
+            self.ui.stackedWidget.setCurrentIndex(1)#OPENING SCREEN AT INDEX 1, THE LATEST SCORES SCREEN
 
 
        
