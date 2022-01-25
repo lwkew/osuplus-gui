@@ -34,7 +34,7 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
         UIFunctions.addNewMenu(self, "mod selection", "btn_widgets", "url(:/16x16/icons/16x16/cil-equalizer.png)", True)
         UIFunctions.selectStandardMenu(self, "btn_home")
         self.ui.stackedWidget.setCurrentWidget(self.ui.page_home)
-        #DEFINING THE WIDTH OF THE COLUMNs IN THE TABLE
+        #DEFINING THE WIDTH OF THE COLUMNS IN THE TABLE
         self.ui.Recent_Maps.setColumnWidth(0,460)
         self.ui.Recent_Maps.setColumnWidth(1,70)
         self.ui.Recent_Maps.setColumnWidth(2,70)
@@ -45,10 +45,6 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
 
 
 
-        
-
-        
-        
         def loadmaps():
             
             row = 0
@@ -67,7 +63,7 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
             title= userinfo.GetRecentTitle()
             row = 0
             for test in title:
-                #LOOPING THROUGH THE TITLES AND PLACING THEM IN THE FORST COLUMN OF THE TABLE
+                #LOOPING THROUGH THE TITLES AND PLACING THEM IN THE FIRST COLUMN OF THE TABLE
                 self.ui.Recent_Maps.setItem(row, 0, QtWidgets.QTableWidgetItem(test))
                 row = row+1
             
@@ -99,13 +95,14 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
             m.mod_change()
 
             recommend_songs = m.FindMap()
-            print(recommend_songs)
+            test = m.sorter()
+            print(test)
             number = random.randint(0,len(recommend_songs)-1)
+            print(number)
 
             #PLACING THE RECOMMENDATION DATA ON THE SCREEN
             self.ui.title_5.setText(str(recommend_songs[number]['title']))#RECOMMENDATION TITLE
             self.ui.title_6.setText(str(round(float(recommend_songs[number]['difficultyrating']),2))+'*')#RECOMMENDATION STAR RATING
-            #self.ui.title_7.setText('osu://s/'+ str(recommend_songs[number]['beatmapset_id']))
          
             #CREATING THE INTERACTIVE MAP LINK
             string1 = ('osu://s/'+ str(recommend_songs[number]['beatmapset_id']))#RECOMMENDATION MAP LINK

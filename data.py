@@ -1,4 +1,4 @@
-
+import random
 import settings
 from typing import Final
 import requests
@@ -7,9 +7,6 @@ global recentmap
 
 #09fe03d3b80c29a27e0b75b07e0c483c54657817
 
-
-#GLOBAL REQUEST FOR THE DATA FROM THE PLAYER IN THE GAME
-#settings.request1 = requests.get('https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&limit=20&u=lwke')
 
 recentscore = []
 recentmap = []
@@ -58,7 +55,7 @@ class userinfo():
             add = (300*(current300)) + (100*(current100)) + (50*(current50))
             divide = (300*(current300 + current100 + current50 + miss))
             
-            #DIVIDING THE TWO CALCULATED NUMBERS BY EACHOTHER TO FORM THE ACCURACY READING
+            #DIVIDING THE TWO CALCULATED NUMBERS BY EACH OTHER TO FORM THE ACCURACY READING
             temp = round(((add / divide)*100),2)
             settings.accuracy.append(temp)
             
@@ -94,7 +91,7 @@ class recommendinfo():
         pull2 = recentmap1[0]
         self._map_rating = float(pull2['difficultyrating'])
         
-    #FUNCTION TO SHOW THE DATA, ENSURING ITS CORRECT
+    #FUNCTION TO PRINT THE DATA, FOR TESTING
     def printer(self):
         print('map rating:', self._map_rating)
         print('latest 300 count:', self._Latest_300)
@@ -123,23 +120,22 @@ class recommendinfo():
             self._new_rating = self._map_rating - 0.2
 
         
-        print('new star rating for recommend:', self._new_rating)
+        #print('new star rating for recommend:', self._new_rating)
 
     def FindMap(self):
         abc = []
         dateloop = 2010
-        
         for j in range (0,10):
             #LOOP THROUGH THE LAST TEN YEARS OF BEATMAPS
             dateloop = dateloop +1 #COUNTER
-            APIRecommend = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&mode=0&limit=500&since=' + str(dateloop) + '-01-01')
+            APIRecommend = requests.get('https://osu.ppy.sh/api/get_beatmaps?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&mode=0&limit=499&since=' + str(dateloop) + '-01-01')
             abc = APIRecommend.json()
-            possible_recommend = []
+            self._possible_recommend = []
             for i in abc:
-                if (self._new_rating -0.1) < float(i['difficultyrating']) < (self._new_rating +0.1): #IF STATEMNT TO PICK OUT ONLY THE MAPS BETWEEN THE DIFFICULTY RATING -+ 0.1
-                    possible_recommend.append(i) #APPEND THE MAP THAT FITS THE REQUIREMENTS TO THE LIST OF MAPS
-        return possible_recommend
-
+                if (self._new_rating -0.1) < float(i['difficultyrating']) < (self._new_rating +0.1): #IF STATEMENT TO PICK OUT ONLY THE MAPS BETWEEN THE DIFFICULTY RATING +- 0.1
+                    self._possible_recommend.append(i) #APPEND THE MAP THAT FITS THE REQUIREMENTS TO THE LIST OF MAPS
+                    
+        return self._possible_recommend
 
     def mod_change(self): # IF STATEMENTS THAT CHANGE THE RECOMMENDATION RATING BASED ON THE MOD CHOICE FROM THE PROGRAM
         if settings.ModChoice == 1:
@@ -155,8 +151,15 @@ class recommendinfo():
 
 
 
+    def sorter(self): #FUNCTION TO BUBBLE SORT THE RECOMMENDED MAPS
+        for i in range (len(self._possible_recommend)):
+            for j in range(len(self._possible_recommend)-1):
+                if int(self._possible_recommend['difficultyrating'])[j]>int(self._possible_recommend['difficultyrating'])[j+1]:
+                    self._possible_recommend[j], self._possible_recommend[j+1] = self._possible_recommend[j+1], self._possible_recommend[j]
+                    print('YAYAYAYYAYAYA')
 
-
+                
+        return self._possible_recommend
 
  
 

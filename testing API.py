@@ -6,7 +6,7 @@ rating = 5.5
 newrating = 5.6
 #abc=[]
 
-req5 = requests.get('https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&type=string&u=lwke&limit=20')
+req5 = requests.get('https://osu.ppy.sh/api/get_user_recent?k=09fe03d3b80c29a27e0b75b07e0c483c54657817&type=string&u=lwke&limit=2')
 #print(req5)
 abc=req5.json()
 print(abc)

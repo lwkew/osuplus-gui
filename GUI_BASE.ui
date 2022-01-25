@@ -1465,7 +1465,7 @@ QPushButton:pressed {
 }</string>
                   </property>
                   <property name="text">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;osu!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:400;&quot;&gt;osu!+&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
@@ -1538,6 +1538,9 @@ QPushButton:pressed {
                    <number>0</number>
                   </property>
                   <widget class="QWidget" name="page_home">
+                   <property name="mouseTracking">
+                    <bool>false</bool>
+                   </property>
                    <layout class="QVBoxLayout" name="verticalLayout_10">
                     <item>
                      <widget class="QLabel" name="title">
