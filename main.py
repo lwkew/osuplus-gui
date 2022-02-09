@@ -1,4 +1,3 @@
-# from _typeshed import Self
 import settings
 import random
 import sys
@@ -8,7 +7,6 @@ from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
-
 from app_modules import *
 
 from data import recommendinfo, userinfo
@@ -69,7 +67,6 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
             
             songs2 = userinfo.GetRecentAccuracy()
             row = 0
-
             for song1 in songs2:
                 #LOOPING THROUGH THE ACCURACY CALCULATIONS AND ADDING THEM INTO THE TABLE
                 self.ui.Recent_Maps.setItem(row, 5, QtWidgets.QTableWidgetItem(str(song1)+'%'))
@@ -95,17 +92,15 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
             m.mod_change()
 
             recommend_songs = m.FindMap()
-            test = m.sorter()
-            print(test)
-            number = random.randint(0,len(recommend_songs)-1)
-            print(number)
+            sorted_list = m.sorter()
+            random_number = random.randint(0,len(sorted_list)-1)
 
             #PLACING THE RECOMMENDATION DATA ON THE SCREEN
-            self.ui.title_5.setText(str(recommend_songs[number]['title']))#RECOMMENDATION TITLE
-            self.ui.title_6.setText(str(round(float(recommend_songs[number]['difficultyrating']),2))+'*')#RECOMMENDATION STAR RATING
+            self.ui.title_5.setText(str(recommend_songs[random_number]['title']))#RECOMMENDATION TITLE
+            self.ui.title_6.setText(str(round(float(recommend_songs[random_number]['difficultyrating']),2))+'*')#RECOMMENDATION STAR RATING
          
             #CREATING THE INTERACTIVE MAP LINK
-            string1 = ('osu://s/'+ str(recommend_songs[number]['beatmapset_id']))#RECOMMENDATION MAP LINK
+            string1 = ('osu://s/'+ str(recommend_songs[random_number]['beatmapset_id']))#RECOMMENDATION MAP LINK
             linkTemplate = '<a href={0}>{1}</a>'
             self.ui.title_7.setOpenExternalLinks(True)#MAKING THE LINK CLICKABLE
             self.ui.title_7.setText(linkTemplate.format(string1, 'map link'))#ADDING TO THE SCREEN
@@ -128,9 +123,6 @@ class MainWindow(QMainWindow, userinfo, recommendinfo, QLabel):
                 print('mod choice: Flashlight')
         
         
-       
-
-
         #COMMANDS TO HAVE A FUNCTION RUN AFTER A BUTTON PRESS
         self.ui.btn_submit.clicked.connect(recommendMaps)
         self.ui.btn_go.clicked.connect(lambda:scores_click())

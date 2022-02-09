@@ -1,4 +1,4 @@
-import random
+
 import settings
 from typing import Final
 import requests
@@ -72,7 +72,7 @@ class recommendinfo():
         self._Latest_300 = 0
         self._Best300 = 0
         self._map_rating = 0
-        
+        self._possible_recommend = []
         #PULLING THE LATEST SCORE FROM THE API
         recentscore = settings.request1.json()
         latest_score1 = recentscore[0]
@@ -154,16 +154,12 @@ class recommendinfo():
     def sorter(self): #FUNCTION TO BUBBLE SORT THE RECOMMENDED MAPS
         for i in range (len(self._possible_recommend)):
             for j in range(len(self._possible_recommend)-1):
-                if int(self._possible_recommend['difficultyrating'])[j]>int(self._possible_recommend['difficultyrating'])[j+1]:
+                if float(self._possible_recommend[j]['difficultyrating'])>float(self._possible_recommend[j+1]['difficultyrating']):
                     self._possible_recommend[j], self._possible_recommend[j+1] = self._possible_recommend[j+1], self._possible_recommend[j]
-                    print('YAYAYAYYAYAYA')
-
                 
         return self._possible_recommend
 
  
 
 
-        
 
- 
